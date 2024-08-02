@@ -1,0 +1,5 @@
+Milestone 3 Project by Sara Pena. Task Management App
+
+Frontend Technologies: HTML/CSS/JAVASCRIPT
+Backend Tecnologies: Python/Flask
+Database: MySQL
