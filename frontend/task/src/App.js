@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Task Tracker</h1>
+      <h1>Task Manager</h1>
       <div className="container">
         <div className="column" id="current-items">
           <h2>Current Tasks</h2>
@@ -52,7 +52,7 @@ const App = () => {
                     </Col>
                     <Col sm>
                       <Button
-                        variant="danger"
+                        variant="secondary"
                         onClick={(e) => {
                           e.stopPropagation();
                           removeItem(item, currentItems, setCurrentItems);
@@ -92,7 +92,7 @@ const App = () => {
                     </Col>
                     <Col sm>
                       <Button
-                        variant="danger"
+                        variant="seconday"
                         onClick={(e) => {
                           e.stopPropagation();
                           removeItem(item, completedItems, setCompletedItems);
