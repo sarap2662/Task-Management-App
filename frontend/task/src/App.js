@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Form, Col, Row, Button, InputGroup, Container } from "react-bootstrap";
 import "./App.css"; // Optional: for custom styles
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   const [currentItems, setCurrentItems] = useState([]);
@@ -18,51 +20,91 @@ const App = () => {
     setToList([...toList, item]);
   };
 
+  const removeItem = (item, list, setList) => {
+    setList(list.filter((i) => i !== item));
+  };
+
   return (
     <div className="App">
-      <h1>Task Manager</h1>
+      <h1>Item Tracker</h1>
       <div className="container">
         <div className="column" id="current-items">
-          <h2>Current Tasks</h2>
+          <h2>Current Items</h2>
           <ul className="item-list">
-            {currentItems.map((item, index) => (
-              <li
-                key={index}
-                onClick={() =>
-                  moveItem(
-                    item,
-                    currentItems,
-                    completedItems,
-                    setCurrentItems,
-                    setCompletedItems
-                  )
-                }
-              >
-                {item}
-              </li>
-            ))}
+            <Container fluid>
+              <Row>
+                {currentItems.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <Col lg>
+                      <li
+                        onClick={() =>
+                          moveItem(
+                            item,
+                            currentItems,
+                            completedItems,
+                            setCurrentItems,
+                            setCompletedItems
+                          )
+                        }
+                      >
+                        {item}
+                      </li>
+                    </Col>
+                    <Col sm>
+                      <Button
+                        variant="danger"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeItem(item, currentItems, setCurrentItems);
+                        }}
+                      >
+                        Remove
+                      </Button>
+                    </Col>
+                  </React.Fragment>
+                ))}
+              </Row>
+            </Container>
           </ul>
         </div>
 
         <div className="column" id="completed-items">
-          <h2>Completed Tasks</h2>
+          <h2>Completed Items</h2>
           <ul className="item-list">
-            {completedItems.map((item, index) => (
-              <li
-                key={index}
-                onClick={() =>
-                  moveItem(
-                    item,
-                    completedItems,
-                    currentItems,
-                    setCompletedItems,
-                    setCurrentItems
-                  )
-                }
-              >
-                {item}
-              </li>
-            ))}
+            <Container fluid>
+              <Row>
+                {completedItems.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <Col lg>
+                      <li
+                        onClick={() =>
+                          moveItem(
+                            item,
+                            completedItems,
+                            currentItems,
+                            setCompletedItems,
+                            setCurrentItems
+                          )
+                        }
+                      >
+                        {item}
+                      </li>
+                    </Col>
+                    <Col sm>
+                      <Button
+                        variant="danger"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeItem(item, completedItems, setCompletedItems);
+                        }}
+                      >
+                        Remove
+                      </Button>
+                    </Col>
+                  </React.Fragment>
+                ))}
+              </Row>
+            </Container>
           </ul>
         </div>
       </div>
