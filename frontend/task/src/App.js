@@ -26,10 +26,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Item Tracker</h1>
+      <h1>Task Tracker</h1>
       <div className="container">
         <div className="column" id="current-items">
-          <h2>Current Items</h2>
+          <h2>Current Tasks</h2>
           <ul className="item-list">
             <Container fluid>
               <Row>
@@ -69,7 +69,7 @@ const App = () => {
         </div>
 
         <div className="column" id="completed-items">
-          <h2>Completed Items</h2>
+          <h2>Completed Tasks</h2>
           <ul className="item-list">
             <Container fluid>
               <Row>
