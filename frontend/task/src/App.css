@@ -1,13 +1,12 @@
 .App {
   font-family: Arial, sans-serif;
-  margin: 20px;
   background-image: url("images/notepad4.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  padding: 20px;
   color: #fff;
+  
 }
 
 .container {
@@ -41,7 +40,7 @@
   color: black;
   padding: 7px 10px 5px;
   margin-top: 25px;
-  margin-left: -20px;
+  margin-left: 10px;
 }
 
 .item-list button:hover {
