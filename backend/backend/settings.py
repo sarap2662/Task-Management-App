@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -80,15 +83,14 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'task_app',
-        'USER': "postgres",
-        'PASSWORD': "rootPW",
-        'HOST': 'localhost',
-        'PORT': '5432',
-        }
-
+ 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+ 'NAME': os.getenv('DB_NAME'),
+ 'USER': os.getenv('DB_USER'),
+ 'PASSWORD': os.getenv('DB_PASSWORD'),
+ 'HOST': os.getenv('DB_HOST'),
+ 'PORT': os.getenv('DB_PORT'),
     }
+}
 
 
 # Password validation
@@ -131,3 +133,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ALLOWED_ORIGINS = [
+"http://localhost:3000",
+"http://127.0.0.1:3000",
+]
