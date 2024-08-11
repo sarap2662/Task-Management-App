@@ -57,7 +57,7 @@ python -m venv venv
 pip install -r requirements.txt
 
 4. Set up PostgreSQL:
-Create a PostgreSQL database and user, and update the DATABASES configuration in `backend/settings.py` with your database details.
+Create a PostgreSQL database and user, and update the DATABASES configuration in backend/settings.py with your database details.
 
 5. Apply database migrations:
 python manage.py migrate
