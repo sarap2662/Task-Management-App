@@ -30,43 +30,38 @@
   text-align: center;
 }
 
-.item-list {
+.item-unit {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 0;
-  margin: 0;
 }
 
-.item-list button {
+.item-unit button {
   background-color: white;
   border: 2px solid black;
   color: black;
-  padding: 7px 10px 5px;
-  margin-top: 25px;
   margin-left: 10px;
 }
 
-.item-list button:hover {
+.item-unit button:hover {
   background-color: black;
   border-color: black;
 }
 
-.item-list li {
-  padding: 8px 20px;
+.item-unit li {
+  padding: 10px 30px;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  margin-top: 25px;
   background-color: darkslategray;
+  color: white;
 }
 
-.item-list li:hover {
+.item-unit li:hover {
   background-color: darkslategray;
 }
 
@@ -85,6 +80,9 @@
 
 .form-group button {
   padding: 8px 30px;
+  background-color: white;
+  border-color: white;
+  color: black;
 }
 
 .form-group button:hover {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function TaskApp() {
@@ -12,14 +12,13 @@ function TaskApp() {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
+    // Fetch initial data
     axios
       .get("http://127.0.0.1:8000/todos")
       .then((res) => {
-        const allItems = res.data;
-        const current = allItems.filter((item) => !item.completed);
-        const completed = allItems.filter((item) => item.completed);
-        setCurrentItems(current);
-        setCompletedItems(completed);
+        const items = res.data;
+        setCurrentItems(items.filter((item) => !item.completed));
+        setCompletedItems(items.filter((item) => item.completed));
       })
       .catch((err) => {
         setErrors([err.message]);
@@ -95,107 +94,89 @@ function TaskApp() {
 
   return (
     <div className="App">
-      <h1>Task Tracker</h1>
+      <h1>Task Manager</h1>
       <div className="container">
-        <div className="column" id="current-items">
-          <h2>Current Tasks</h2>
-          <ul className="item-list">
-            <Container fluid>
-              <Row className="mb-3">
-                {currentItems.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <Col>
-                      <div className="item-unit">
-                        {editItemId === item.id ? (
-                          <>
-                            <input
-                              type="text"
-                              value={editItemName}
-                              onChange={(e) => setEditItemName(e.target.value)}
-                            />
-                            <button onClick={() => toggleEditSave(item)}>
-                              Save
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <li
-                              onClick={() =>
-                                moveItem(
-                                  item,
-                                  currentItems,
-                                  setCurrentItems,
-                                  setCompletedItems
-                                )
-                              }
-                            >
-                              {item.task}
-                            </li>
-                            <Button onClick={() => toggleEditSave(item)}>
-                              Edit
-                            </Button>
-                            <Button
-                              variant="danger"
-                              onClick={() =>
-                                removeItem(
-                                  item.id,
-                                  currentItems,
-                                  setCurrentItems
-                                )
-                              }
-                            >
-                              Remove
-                            </Button>
-                          </>
-                        )}
-                      </div>
-                    </Col>
-                  </React.Fragment>
-                ))}
-              </Row>
-            </Container>
-          </ul>
-        </div>
-        <div className="column" id="completed-items">
-          <h2>Completed Tasks</h2>
-          <ul className="item-list">
-            <Container fluid>
-              <Row className="mb-3">
-                {completedItems.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <Col>
-                      <div className="item-unit">
+        <div className="column">
+          <h2>Current Items</h2>
+          {currentItems.map((item, index) => (
+            <div key={index} className="flex-item">
+              <Card className="item-unit">
+                <Card.Body>
+                  {editItemId === item.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editItemName}
+                        onChange={(e) => setEditItemName(e.target.value)}
+                      />
+                      <Button onClick={() => toggleEditSave(item)}>Save</Button>
+                    </>
+                  ) : (
+                    <>
+                      <Card.Text>
                         <li
                           onClick={() =>
                             moveItem(
                               item,
-                              completedItems,
-                              setCompletedItems,
-                              setCurrentItems
+                              currentItems,
+                              setCurrentItems,
+                              setCompletedItems
                             )
                           }
                         >
                           {item.task}
                         </li>
-                        <Button
-                          variant="danger"
-                          onClick={() =>
-                            removeItem(
-                              item.id,
-                              completedItems,
-                              setCompletedItems
-                            )
-                          }
-                        >
-                          Remove
-                        </Button>
-                      </div>
-                    </Col>
-                  </React.Fragment>
-                ))}
-              </Row>
-            </Container>
-          </ul>
+                      </Card.Text>
+                      <Button onClick={() => toggleEditSave(item)}>Edit</Button>
+                      <Button
+                        variant="danger"
+                        onClick={() =>
+                          removeItem(item.id, currentItems, setCurrentItems)
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </>
+                  )}
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </div>
+        <div className="column">
+          <h2>Completed Items</h2>
+          <div className="flex-container">
+            {completedItems.map((item, index) => (
+              <div key={index} className="flex-item">
+                <Card className="item-unit">
+                  <Card.Body>
+                    <Card.Text>
+                      <li
+                        onClick={() =>
+                          moveItem(
+                            item,
+                            completedItems,
+                            setCompletedItems,
+                            setCurrentItems
+                          )
+                        }
+                      >
+                        {item.task}
+                      </li>
+                    </Card.Text>
+                    <Button
+                      variant="danger"
+                      onClick={() =>
+                        removeItem(item.id, completedItems, setCompletedItems)
+                      }
+                    >
+                      Remove
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="form-group">
@@ -203,11 +184,12 @@ function TaskApp() {
           type="text"
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
-          placeholder="Enter new item"
+          placeholder="Enter new task"
         />
-        <button onClick={addItem}>Add Item</button>
+        <Button onClick={addItem}>Add Task</Button>
       </div>
     </div>
   );
 }
+
 export default TaskApp;
