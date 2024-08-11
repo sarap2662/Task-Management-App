@@ -197,15 +197,15 @@ function TaskApp() {
             </Container>
           </ul>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            value={newItem}
-            onChange={(e) => setNewItem(e.target.value)}
-            placeholder="Enter new item"
-          />
-          <button onClick={addItem}>Add Item</button>
-        </div>
+      </div>
+      <div className="form-group">
+        <input
+          type="text"
+          value={newItem}
+          onChange={(e) => setNewItem(e.target.value)}
+          placeholder="Enter new item"
+        />
+        <button onClick={addItem}>Add Item</button>
       </div>
     </div>
   );
