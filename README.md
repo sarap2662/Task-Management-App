@@ -1,8 +1,3 @@
-
-Certainly! Here's a template for a README.md file for a project that uses React, Bootstrap, CSS, HTML, and JavaScript for the frontend, and Python with Django for the backend, along with PostgreSQL for the database:
-
-markdown
-Copy code
 # Project Name
 Task Management App
 ## Description
@@ -14,7 +9,6 @@ This project is a web application that allows users to manage tasks, track progr
 2. [Installation](#installation)
 3. [Usage](#usage)
 5. [API Endpoints](#api-endpoints)
-6. [Contributing](#contributing)
 
 ## Technologies Used
 
@@ -94,3 +88,5 @@ GET /api/tasks/{id}/: Retrieve a task by ID
 PUT /api/todos/{id}/: Update a task by ID
 DELETE /api/tasks/{id}/: Delete a task by ID
 Refer to the Django REST Framework documentation for more details on the API.
+
+## AUTHENTICATION WAS NOT ADDED
