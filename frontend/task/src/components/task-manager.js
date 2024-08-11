@@ -97,7 +97,7 @@ function TaskApp() {
       <h1>Task Manager</h1>
       <div className="container">
         <div className="column">
-          <h2>Current Items</h2>
+          <h2>Current Tasks</h2>
           {currentItems.map((item, index) => (
             <div key={index} className="flex-item">
               <Card className="item-unit">
@@ -144,7 +144,7 @@ function TaskApp() {
           ))}
         </div>
         <div className="column">
-          <h2>Completed Items</h2>
+          <h2>Completed Tasks</h2>
           <div className="flex-container">
             {completedItems.map((item, index) => (
               <div key={index} className="flex-item">
