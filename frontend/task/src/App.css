@@ -36,7 +36,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  background-color: hsl(31, 61%, 92%);
+  background: rgba(76, 175, 80, 0);
+  border-color: rgba(76, 175, 80, 0);;
 }
 
 .item-unit button {
