@@ -31,10 +31,12 @@
 }
 
 .item-unit {
+  margin-top: 15px;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  background-color: hsl(31, 61%, 92%);
 }
 
 .item-unit button {
