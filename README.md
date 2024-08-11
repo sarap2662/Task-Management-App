@@ -36,8 +36,7 @@ This project is a web application that allows users to manage tasks, track progr
 
 ### Frontend
 
-1. Navigate to the `frontend` directory:
-   ```bash
+1. Navigate to the frontend directory:
    cd frontend
 
 2. Install the required npm packages:
