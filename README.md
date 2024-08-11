@@ -80,12 +80,17 @@ cd backend
 python manage.py runserver
 
 ## API ENDPOINTS
-API Endpoints
-GET /api/tasks/: List all tasks
-POST /api/tasks/: Create a new task
-GET /api/tasks/{id}/: Retrieve a task by ID
-PUT /api/todos/{id}/: Update a task by ID
-DELETE /api/tasks/{id}/: Delete a task by ID
-Refer to the Django REST Framework documentation for more details on the API.
+User Authentication and Registration:
+
+POST /register/: Register a new user
+POST /login/: Log in a user
+POST /logout/: Log out a user
+Todo Tasks:
+
+GET /todos/: List all tasks
+POST /todos/: Create a new task
+GET /todos/{id}/: Retrieve a task by ID
+PUT /todos/{id}/: Update a task by ID
+DELETE /todos/{id}/: Delete a task by ID
 
 ## AUTHENTICATION WAS NOT ADDED
